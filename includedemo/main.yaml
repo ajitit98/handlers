@@ -1,0 +1,18 @@
+---
+  - name: Install apache in redhat
+    yum:
+      name: httpd
+      state: present
+  - name: Start and enable apache service
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+  - name: Copy apache home page
+    copy:
+      src: index.html
+      dest: /var/www/html/index.html
+  - name: Insure apache is runing
+    service:
+      name: httpd
+      state: started
